@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project.
 
-## Getting Started
+![Real Estate](estatesfront.JPG)
 
-First, run the development server:
+### The Objective
+The goal of this project was to gain a deeper understanding of Nextjs as well as use more advanced hooks in react.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## How it Works
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project uses [Chakra](https://chakra-ui.com/docs/getting-started) for the user interface.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The real estate data is being pulled from an API called Bayut.
+([Docs](https://rapidapi.com/apidojo/api/bayut?utm_source=youtube.com%2FJavaScriptMastery&utm_medium=DevRel&utm_campaign=DevRel)) Each property includes data such as price, square ft, beds, bath, and even agency. Along with this other data, each property includes images, which is very important considering the UI is heavily reliant on these images.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Routing
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The app consists of a homepage and a three search pages. The general search page, the for-rent search page, and the for-sale search page.
 
-## Learn More
+The file is the same search.js file in all three instances, but the route determines what content the user will be seeing on the page.
 
-To learn more about Next.js, take a look at the following resources:
+When a user searches using specified criteria, the url will change accordingly. This allows the user to copy the url and send to a friend to share the search results.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+~~~
+https://real-estate-app-five.vercel.app/search?sort=price-asc&areaMax=4000&roomsMin=5
+~~~
+As you can see, this is the result of a user searching for properties, ordered by lowest price, maximum area of 4000 sq ft, and minimum of 5 bedrooms.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+When the user clicks on a property, he is then routed to a corresponding page. This routing uses folder-based routing.
 
-## Deploy on Vercel
+The files are organized as follows. 
+~~~
+app/pages/
+    |__ _app.js
+    |__index.js
+    |__search.js (searching functionality)
+    |__/property/
+        |__[id].js (id referring to the id of the selected property)
+~~~
+Here, you can see the filename of [id].js which allows for the dynamic routing.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Thank you for visiting.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![estates.io](https://real-estate-app-five.vercel.app/estatesio.png)
+
